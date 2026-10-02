@@ -1,0 +1,254 @@
+@import "tailwindcss";
+
+:root {
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: #111827;
+  background: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.admin-loading {
+  min-height: 300px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  gap: 12px;
+
+  color: #a7f3d0;
+}
+
+.loading-spinner {
+  width: 36px;
+  height: 36px;
+
+  border: 3px solid
+    rgba(255, 255, 255, 0.15);
+
+  border-top-color: #34d399;
+
+  border-radius: 50%;
+
+  animation: admin-spin 0.8s linear infinite;
+}
+
+@keyframes admin-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.admin-filters {
+  display: flex;
+
+  gap: 12px;
+
+  margin-bottom: 20px;
+
+  flex-wrap: wrap;
+}
+
+.admin-filters input,
+.admin-filters select {
+  min-height: 42px;
+
+  padding: 0 14px;
+
+  border: 1px solid
+    rgba(255, 255, 255, 0.12);
+
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  color: inherit;
+
+  outline: none;
+}
+
+.admin-filters input {
+  min-width: 280px;
+}
+
+.admin-filters input:focus,
+.admin-filters select:focus {
+  border-color: #34d399;
+}
+
+.empty-state {
+  padding: 50px 30px;
+
+  text-align: center;
+
+  border: 1px dashed
+    rgba(255, 255, 255, 0.12);
+
+  border-radius: 12px;
+}
+
+.empty-state h3 {
+  margin: 0 0 8px;
+}
+
+.empty-state p {
+  margin: 0;
+
+  opacity: 0.65;
+}
+
+.dashboard-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(180px, 1fr)
+    );
+
+  gap: 16px;
+
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  padding: 22px;
+
+  border: 1px solid
+    rgba(255, 255, 255, 0.08);
+
+  border-radius: 14px;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+}
+
+.stat-card span {
+  display: block;
+
+  margin-bottom: 10px;
+
+  font-size: 14px;
+
+  opacity: 0.65;
+}
+
+.stat-card strong {
+  display: block;
+
+  font-size: 32px;
+
+  line-height: 1;
+}
+
+.table-actions {
+  display: flex;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+}
+
+.danger-button {
+  color: #fca5a5 !important;
+
+  border-color:
+    rgba(248, 113, 113, 0.3) !important;
+}
+
+.status-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 5px 9px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  text-transform: capitalize;
+}
+
+.status-new {
+  background: rgba(59, 130, 246, 0.15);
+}
+
+.status-in_progress {
+  background: rgba(234, 179, 8, 0.15);
+}
+
+.status-resolved {
+  background: rgba(34, 197, 94, 0.15);
+}
+
+.status-archived {
+  background: rgba(148, 163, 184, 0.15);
+}
+
+@media (max-width: 768px) {
+  .admin-filters {
+    flex-direction: column;
+  }
+
+  .admin-filters input {
+    min-width: 0;
+
+    width: 100%;
+  }
+
+  .admin-filters select {
+    width: 100%;
+  }
+
+  .admin-table-wrapper {
+    overflow-x: auto;
+  }
+
+  .admin-table {
+    min-width: 900px;
+  }
+}

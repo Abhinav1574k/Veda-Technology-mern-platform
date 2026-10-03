@@ -7,6 +7,7 @@ const api = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
+  timeout: 15000,
 });
 
 api.interceptors.request.use(
@@ -20,6 +21,23 @@ api.interceptors.request.use(
     return config;
   },
   (error) => Promise.reject(error)
+);
+
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      const isAdminRequest =
+        error.config?.url?.includes("/admin");
+
+      if (isAdminRequest) {
+        localStorage.removeItem("adminToken");
+        localStorage.removeItem("adminUser");
+      }
+    }
+
+    return Promise.reject(error);
+  }
 );
 
 export default api;

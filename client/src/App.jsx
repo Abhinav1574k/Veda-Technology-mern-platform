@@ -13,14 +13,16 @@ import  AuthProvider  from "./admin/context/AuthContext";
 
 import ProtectedRoute from "./admin/components/ProtectedRoute";
 import AdminLayout from "./admin/layouts/AdminLayout";
-import Navbar from "./components/Navbar"
-import Footer from "./components/Footer"
+
 import AdminLogin from "./admin/pages/AdminLogin";
 import Dashboard from "./admin/pages/Dashboard";
 import ServicesAdmin from "./admin/pages/ServicesAdmin";
 import ProgramsAdmin from "./admin/pages/ProgramsAdmin";
 import FAQsAdmin from "./admin/pages/FAQsAdmin";
 import InquiriesAdmin from "./admin/pages/InquiriesAdmin";
+
+import Navbar from "./components/Navbar"
+import Footer from "./components/Footer"
 
 /*
 |--------------------------------------------------------------------------
@@ -59,26 +61,13 @@ const NotFound = () => {
   );
 };
 
-function PublicLayout() {
-  return (
-    <div className="min-h-screen bg-white text-slate-950">
-      <Navbar />
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/programs" element={<Programs />} />
-        <Route path="/internship" element={<Internship />} />
-        <Route path="/faq" element={<FAQ />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-
-      <Footer />
-    </div>
-  );
-}
+const PublicLayout = ({ children }) => {
+  return <>
+    <Navbar />
+    {children}
+    <Footer />
+  </>;
+};
 
 function App() {
   return (
@@ -157,7 +146,6 @@ function App() {
             {/* ---------------------------------------------------------
                 Public Website
             --------------------------------------------------------- */}
-
             <Route
               path="/"
               element={
